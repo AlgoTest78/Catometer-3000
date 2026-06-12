@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Котометр 3000</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>🐱 КОТОМЕТР 3000 🐱</h1>
+    <p>Узнай свой уровень котовости!</p>
+
+    <input type="text" id="nameInput" placeholder="Введи имя">
+
+    <button onclick="checkCat()">ПРОВЕРИТЬ КОТОВОСТЬ</button>
+
+    <div id="result" class="result">
+        <img id="catImg" src="https://ir.ozone.ru/s3/multimedia-1-l/7646540601.jpg" alt="Кот">
+        <h2 id="catPercent"></h2>
+        <h3 id="catType"></h3>
+        <p id="catDesc"></p>
+    </div>
+</div>
+
+<script>
+const cats = [
+{
+name: "Бурмалдивый Кот",
+desc: "Спит 18 часов в сутки и всё равно устал."
+},
+{
+name: "Турбо-Мурзик",
+desc: "Носится по квартире в 3 ночи без причины."
+},
+{
+name: "Шаурмяу",
+desc: "Готов продать душу за еду."
+},
+{
+name: "Кот-Налоговик",
+desc: "Проверяет каждый пакет из магазина."
+},
+{
+name: "Агент Мяу-007",
+desc: "Следит за всеми, но делает вид что спит."
+},
+{
+name: "Картофельный Кот",
+desc: "Лежит. Просто лежит."
+},
+{
+name: "Кот Разрушитель Ваз",
+desc: "Уничтожает всё на своём пути."
+},
+{
+name: "Мяуфон Маск",
+desc: "Планирует захватить Марс и холодильник."
+},
+{
+name: "Кот-Босс",
+desc: "Считает квартиру своей собственностью."
+},
+{
+name: "Чебурековый Кот",
+desc: "Появляется рядом с едой из ниоткуда."
+}
+];
+
+function checkCat() {
+const name = document.getElementById("nameInput").value.trim();
+
+if(!name){
+alert("Введи имя!");
+return;
+}
+
+let score = 0;
+
+for(let i=0;i<name.length;i++){
+score += name.charCodeAt(i);
+}
+
+const percent = score % 101;
+const cat = cats[score % cats.length];
+
+document.getElementById("catImg").src = "https://ir.ozone.ru/s3/multimedia-1-l/7646540601.jpg";
+document.getElementById("catPercent").innerText =
+`Имя ${name} состоит на ${percent}% котовости`;
+
+document.getElementById("catType").innerText =
+`😹 Ты — ${cat.name}`;
+
+document.getElementById("catDesc").innerText =
+cat.desc;
+
+document.getElementById("result").style.display = "block";
+}
+</script>
+
+</body>
+</html>
